@@ -104,6 +104,7 @@ export default function Home(props) {
                             <Card
                                 key={v.id}
                                 id={v.id}
+                                createdInDb={v.createdInDb?v.createdInDb:false}
                                 name={v.name}
                                 imgUrl={v.image?v.image:v.img}
                                 genres={v.genres}

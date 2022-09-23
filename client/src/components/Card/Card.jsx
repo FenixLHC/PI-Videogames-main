@@ -5,7 +5,7 @@ import "./Card.css";
 export default function Card(props) {
   return (
     <div clasname={"card"}>
-      <Link to={`/VideogameDetail/${props.id}`}>
+      <Link to={`/VideogameDetail/${props.id}?createdInDb=${props.createdInDb}`}>
         <h2>{props.name}</h2>
       </Link>
       <img src={props.imgUrl} alt={'Image not found'} width='350px' height='450px'/>

@@ -110,7 +110,7 @@ export default function VideogameCreate() {
           <label>Platforms</label>
           {platformsFromApi?.map((p) => {
             return (
-              <label>
+              <label key={p.id}>
                 <input
                   type="checkbox"
                   key={p.id}
@@ -126,7 +126,7 @@ export default function VideogameCreate() {
         <div>
           <select  onChange={(e) => handleSelect(e)}>
             <option>Genres</option>
-            {genres.map((g) => {
+            {genres?.map((g) => {
               return (
                 <option
                   key={g.id}
