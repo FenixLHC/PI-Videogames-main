@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { getVideogameDetail } from "../../redux/actions";
 
-import "./VideogameDetail.css";
+import styles from "./VideogameDetail.module.css";
 
 export default function VideogameDetail(props) {
   console.log("🚀 ~ file: VideogameDetail.jsx ~ line 9 ~ VideogameDetail ~ props", props)

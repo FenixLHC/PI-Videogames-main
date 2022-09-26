@@ -11,8 +11,8 @@ import VideogameDetail from './components/VideogameDetail/VideogameDetail.jsx'
 function App() {
   return (
     <React.Fragment>
-      {/* <NavBar /> */}
       <Route exact path='/' component={LandingPage} />
+      <Route path='/' component={NavBar} />
       <Route  path='/Home' component={Home} />
       <Route  path='/CreateVideogame' component={VideogameCreate} />
       <Route  path='/VideogameDetail/:id' component={VideogameDetail} />

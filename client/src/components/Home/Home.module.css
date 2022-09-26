@@ -1,4 +1,4 @@
-body{
+/* body{
     background: url(https://assets-prd.ignimgs.com/2021/12/30/36190303-image-7-1640880187142.png);
     background-size:100%;
     margin:0;
@@ -11,4 +11,31 @@ body{
     align-items: center;
     
 
+} */
+
+.Home{
+    background-color: #18191F;
+    width: 100%;
+    border: 3px solid red;
+
 }
+
+.flexContainer{
+    /* background-color: #969BAB; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:90%;
+    margin:0 auto;
+    border: 3px solid violet ;
+    margin:0 auto;
+    justify-content: space-between;
+    
+}
+.filters{
+    border: 3px solid white;
+}
+
+/* .pagination{
+    border: 2px solid fuchsia
+} */

@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 import { filterByGenre, filterByOrigin, getGenres, getVideogames, orderByName, orderByRating } from "../../redux/actions";
 import Card from "../Card/Card";
+import NavBar from "../NavBar/NavBar";
 import Paginated from "../Paginated/Paginated";
 import SearchBar from "../SearchBar/SearchBar";
-import './Home.css'
+import styles from './Home.module.css'
 
 export default function Home(props) {
 
@@ -62,13 +63,13 @@ export default function Home(props) {
     }
     console.log(`${renderizated}`)
     return (
-        <div >
-            <Link to="/CreateVideogame">Create Videogame</Link>
+        <div className={styles.Home}>
+            
             <h1>Take a view of this Videogames</h1>
-            <button onClick={(e) => { handleReload(e) }} >
-                Reload all Videogames
-            </button>
-            <div>
+            <div className={styles.filters}>
+                <button onClick={(e) => { handleReload(e) }} >
+                    Reload all Videogames
+                </button>
                 <select name='orderByName' id='' onChange={e => handleName(e)}>
                     <option value='default'>Default</option>
                     <option value='asc' >Ascendent</option>
@@ -93,15 +94,15 @@ export default function Home(props) {
                     <option value='Created'>Created</option>
                 </select>
             </div>
-            <Paginated allVideogamesLength={totalVideogames.length} videogamesPerPage={videogamesPerPage} paginated={paginated} />
+            <Paginated allVideogamesLength={totalVideogames.length} videogamesPerPage={videogamesPerPage} paginated={paginated} currentPage={currentPage}/>
 
-            <SearchBar />
+            {/* <SearchBar /> */}
             
-            <div className="cardsOnHome">
+            <div className={styles.flexContainer}>
                 {
                     currentVideogames && currentVideogames.map((v) => {
                         return (
-                            <Card
+                            <Card 
                                 key={v.id}
                                 id={v.id}
                                 createdInDb={v.createdInDb?v.createdInDb:false}
