@@ -1,10 +1,12 @@
  .Card  {
-    /* display: flex;
-    flex-direction: row;
-    align-content: center; */
+    display: flex;
+    flex-direction: column;
+    align-content: center; 
     border-radius: 10px;
     border: 4px solid blue;
     width: 32%;
+    margin:0 auto;
+    justify-content: space-between;
     /* width: 500px;
     height: 500px; */
 
@@ -34,26 +36,37 @@
     justify-content: center;
 }
 .genres{ 
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-around;
+    /* width: %; */
     border: 2px solid #8C30F5;
-    width: 50%;
+    /* width: 50%; */
 
 }
 
-.genres ul li{
+.genres ul a{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: left;
     color: #2EC5CE;
     border: 2px solid lightcyan ;
-    width: 30%;
+    /* width: 100%; */
 }
 
 .btn {
     background-color: #8C30F5;
+    color: wheat;;
     border: 2px solid blue;
-    
-    width: 40%;
-    height: 45%;
+    display: flex;
+    /* width: 80%;
+    height: 45%; */
     border-radius: 5px;
 }
-
+.btn:hover{
+    background-color: #2EC5CE;
+    color:#8C30F5
+}
 /* .card img { 
     width:'200px'; 
     height:'250px'

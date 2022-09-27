@@ -28,31 +28,35 @@ export default function VideogameDetail(props) {
         <h1>{vgD.name}</h1>
         <div>
           <img
-            src={vgD.background_image}
+            src={vgD.backgroundImage}
             alt="Image not found"
             width={"450px"}
             height="550px"
           />
         </div>
-        <h3>Realeased: {vgD.released?vgD.realeased:vgD.releaseDate}</h3>
+        <h3>Released: {vgD?.released?vgD.released:vgD.releaseDate}</h3>
         <h4>Rating: {vgD.rating}</h4>
         <div>
           Genres:
           <ul>
-            {vgD.genres?.map((g) => {
+            {vgD.genres? vgD.genres.map((g,index) => {
+              return <li key={index}>{g}</li>;
+            }):vgD.Genres?.map((g) => {
               return <li key={g.id}>{g.name}</li>;
             })}
           </ul>
         </div>
         <div>
           Platforms:
-          {/* <ul>
-            {vgD.platforms?.map((p) => {
-              return <li key={p.platform.id}>{p.platform.name}</li>;
+          <ul>
+            {vgD.platforms? vgD.platforms.map((p,index) => {
+              return <li key={index}>{p}</li>;
+            }):vgD.Platforms?.map((p,index) => {
+              return <li key={index}>{p.platform?.name}</li>;
             })}
-          </ul> */}
+          </ul>
         </div>
-        <text>Descripcion: {vgD.description_raw}</text>
+        <text>Descripcion: {vgD.description}</text>
       </div>
     </div>
   );

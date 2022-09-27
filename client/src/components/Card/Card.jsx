@@ -18,13 +18,16 @@ export default function Card(props) {
         <div className={styles.genres}>
           <ul >
             {props.genres?.map((g,index) => (
-              <li key={index}>{g}</li>
+              <a key={index}>{g}</a>
             ))}
           </ul>
         </div>
-        <button className={styles.btn}>
-          Know more
-        </button>
+        <Link to={`/VideogameDetail/${props.id}?createdInDb=${props.createdInDb}`}>
+          <button className={styles.btn}>
+            Know more
+          </button>
+          
+        </Link>
       </footer>
 
     </div>

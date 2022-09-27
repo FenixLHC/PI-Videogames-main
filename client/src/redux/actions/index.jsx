@@ -40,10 +40,10 @@ export function getVideogameDetail(idGame, createdInDb) {
         const {
           id,
           name,
-          platforms,
-          genres,
+          Platforms,
+          Genres,
           description,
-          // background_image,
+          backgroundImage,
           rating,
           releaseDate,
         } = json.data[0];
@@ -51,10 +51,10 @@ export function getVideogameDetail(idGame, createdInDb) {
         let newObj = {
           id,
           name,
-          platforms,
-          genres,
+          platforms:Platforms.map(p=>p.name),
+          genres:Genres.map(g=>g.name),
           description,
-          // background_image,
+          backgroundImage,
           rating,
           releaseDate,
         };
@@ -82,10 +82,10 @@ export function getVideogameDetail(idGame, createdInDb) {
       let newObj = {
         id,
         name,
-        platforms,
-        genres,
-        description_raw,
-        background_image,
+        platforms:platforms.map(p=>p.platform.name),
+        genres:genres.map(g=>g.name),
+        description:description_raw,
+        backgroundImage:background_image,
         rating,
         released,
       };
@@ -110,15 +110,24 @@ export function getGenres() {
   };
 }
 
+// export function getPlataforms() {
+//   return async function (dispatch) {
+//     let json = await axios(
+//       `https://api.rawg.io/api/platforms?key=${apiKey}&ordering=games_count`
+//     );
+//     let newJson = json.data.results.slice(30, 50);
+//     return dispatch({
+//       type: "GET_PLATFORMS",
+//       payload: newJson,
+//     });
+//   };
+// }
 export function getPlataforms() {
   return async function (dispatch) {
-    let json = await axios(
-      `https://api.rawg.io/api/platforms?key=${apiKey}&ordering=games_count`
-    );
-    let newJson = json.data.results.slice(30, 50);
+    let json = await axios(`http://localhost:3001/platforms`);
     return dispatch({
       type: "GET_PLATFORMS",
-      payload: newJson,
+      payload: json.data,
     });
   };
 }

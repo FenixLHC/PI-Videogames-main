@@ -14,6 +14,7 @@ export default function Home(props) {
     const dispatch = useDispatch();
     const totalVideogames = useSelector(state => state.videogames);
     const genres = useSelector(state => state.genres)
+    console.log(totalVideogames)
 
     const [currentPage, setCurrentPage] = useState(1);
     const [videogamesPerPage, setVideogamesPerPage] = useState(15);
@@ -71,17 +72,17 @@ export default function Home(props) {
                     Reload all Videogames
                 </button>
                 <select name='orderByName' id='' onChange={e => handleName(e)}>
-                    <option value='default'>Default</option>
+                    <option value='name'>Name</option>
                     <option value='asc' >Ascendent</option>
                     <option value='desc'>Descendent</option>
                 </select>
                 <select name='orderByRating' id=''onChange={e=>handleRating(e)}>
-                    <option value='default'>Default</option>
+                    <option value='rating'>Rating</option>
                     <option value='ascRating'>Ascendente</option>
                     <option value='descRating'>Descendente</option>
                 </select>
                 <select name='genre' id='' onChange={(e) => handleGenres(e)}>
-                    <option value={'All'}>All</option>
+                    <option value={'All'}>All genres</option>
                     {genres.map(g => {
                         return (
                             <option key={g.id} value={g.name} >{g.name}</option>
@@ -107,8 +108,8 @@ export default function Home(props) {
                                 id={v.id}
                                 createdInDb={v.createdInDb?v.createdInDb:false}
                                 name={v.name}
-                                imgUrl={v.image?v.image:v.img}
-                                genres={v.genres}
+                                imgUrl={v.image?v.image:v.backgroundImage}
+                                genres={v.genres?v.genres:v.Genres.map(g=>g.name)}
                             />
                         )
                     })
