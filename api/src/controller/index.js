@@ -18,7 +18,7 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const { Sequelize } = require('sequelize');
-const { Videogame, Genre, Op } = require('../db.js')
+const { Videogame, Genre, Op, Platform } = require('../db.js')
 const { dbApiKey } = require('../utils/config');
 const axios = require('axios');
 
@@ -26,33 +26,53 @@ const axios = require('axios');
 
 const getApiVgs = async () => {
     let vgs = [];
-    for (let i = 1; i <= 5; i++) {
-        const response = await axios(`https://api.rawg.io/api/games?key=${dbApiKey}&page=${i}`)
+    let platforms=[];
+    for (let i = 1; i <= 3; i++) {
+        const response = await axios(`https://api.rawg.io/api/games?key=${dbApiKey}&page=${i}&page_size=40`)
         const vg = await response.data.results.forEach(v => {
             const newObjet = {
                 id: v.id,
                 name: v.name,
-                ratings: v.ratings,
+                rating: v.rating,
                 platforms: v.platforms.map(p => p.platform.name),
                 released: v.released,
                 genres: v.genres.map(g => g.name),
                 image: v.background_image
             }
             vgs.push(newObjet)
+            platforms.push(newObjet.platforms)
         })
     }
+    let newPlatformsSet=new Set(platforms.flat());
+    let newPlatformsArray=[];
+    newPlatformsSet.forEach(v=>newPlatformsArray.push(v));
+    setPlatforms(newPlatformsArray);
+    console.log(newPlatformsArray);
     return vgs
 }
 
 const getDbVgs = async () => {
     const vgs = await Videogame.findAll({
-        include: {
+        include: [
+            {
             model: Genre,
             attributes: ['name'],
             through: {
                 attributes: [],
-            }
-        }
+            }, 
+        },{
+            model:Platform,
+            attributes:['name'],
+            through:{
+                attributes:[],
+            }}]
+        // include:{
+        //     model:Platform,
+        //     attributes:['name'],
+        //     through:{
+        //         attributes:[],
+        //     }
+        // }
     });
     return vgs
 }
@@ -66,19 +86,28 @@ const getAllVgs = async () => {
 
 const createVideogame = async (reqBody) => {
     try {
-        const { name, description, rating, releaseDate, platforms,genre } = reqBody;
+        const { name, description, rating, releaseDate, platforms,genre,backgroundImage } = reqBody;
 
-        let newVideogame = await Videogame.create({ name, description, rating, releaseDate, platforms })
+        let newVideogame = await Videogame.create({ name, description, rating, releaseDate, platforms,backgroundImage })
 
-        const genreDb=await Genre.findAll({
-            where:{name:genre}
+        console.log(genre)
+        genre?.map(async (g)=>{
+            const genreDb=await Genre.findAll({
+            where:{name:g}
         })
+        console.log(genreDb)
+        newVideogame.addGenre(genreDb);})
 
-        newVideogame.addGenre(genreDb)
+        platforms?.map(async (p)=>{
+            const platformDb=await Platform.findAll({
+            where:{name:p}
+        })
+        newVideogame.addPlatform(platformDb);})
 
         return newVideogame
     } catch (error) {
-        console.log('salta error')
+        console.log('salta error');
+        console.log(error)
         return error.message
     }
 }
@@ -96,6 +125,23 @@ const getApiGenres = async () => {
     return genres
 }
 
+//PLATFORMS///////////////////////////////////////////////////////////////////////////////////////////////////
+const setPlatforms = async (platformsArray) => {
+    
+    console.log(platformsArray)
+    const p = platformsArray.map(p => {  
+        Platform.findOrCreate({
+            where: { name: p }
+        })
+    })
+    const platforms = await Platform.findAll()
+    return platforms
+}
+
+const getPlataforms= async()=>{
+    const platforms = await Platform.findAll();
+    return platforms
+}
 //ONE VIDEOGAME///////////////////////////////////////////////////////////////////////////////////////////////
 const getOneVg = async (id) => {
     const vgs=await getAllVgs();
@@ -122,5 +168,6 @@ module.exports = {
     getOneVg,
     getAllVgs,
     createVideogame,
-    getApiGenres
+    getApiGenres,
+    getPlataforms
 }

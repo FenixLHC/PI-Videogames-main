@@ -8,7 +8,7 @@ router.get('/:idVideogame', async (req, res) => {
         const vg = await getOneVg(idVideogame);
         vg.length ? res.json(vg) : res.status(404).send('Videogame not found / Videojuego no encontrado')
     } catch (error) {
-        res.send(error.message)
+        res.send([error.message,'Error getting videogame'])
     }
 });
 

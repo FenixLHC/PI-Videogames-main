@@ -22,8 +22,15 @@ const { conn } = require('./src/db.js');
 const {Port}= require('./src/utils/config')
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(Port, () => {
     console.log(`%s listening at ${Port}`); // eslint-disable-line no-console
   });
 });
+
+//                      _oo0oo_
+//                     o8888888o
+//                     88" . "88
+//                     (| -_- |)
+//                     0\  =  /0
+//                   ___/`-ˆ-'\___

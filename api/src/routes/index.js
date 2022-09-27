@@ -5,6 +5,7 @@ const router = Router();
 const videoGamesRoutes = require('./videoGamesRoutes.js')
 const genreRoutes = require('./genreRoutes.js')
 const oneVgRoute = require('./oneVgRoute.js')
+const platformsRoutes=require('./platformRoutes.js')
 
 
 // Configurar los routers
@@ -12,6 +13,7 @@ const oneVgRoute = require('./oneVgRoute.js')
 router.use('/videogames', videoGamesRoutes);
 router.use('/videogame', oneVgRoute);
 router.use('/genres', genreRoutes)
+router.use('/platforms',platformsRoutes)
 
 
 

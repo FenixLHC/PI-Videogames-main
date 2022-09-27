@@ -19,17 +19,17 @@ router.get('/', async (req, res) => {
         const genres= await getApiGenres()
         res.send(genres)
     } catch (error) {
-        res.send(error.message)
+        res.send([error.message,'error getting genres'])
     }
 
 });
 
-router.post('/', async (req, res) => {
-    try {
-        const newVideogame = await createVideogame(req.body);
-        res.status(201).json(newVideogame)
-    } catch (error) {
-        res.status(400).send(error.message)
-    }
-});
+// router.post('/', async (req, res) => {
+//     try {
+//         const newVideogame = await createVideogame(req.body);
+//         res.status(201).json(newVideogame)
+//     } catch (error) {
+//         res.status(400).send(error.message)
+//     }
+// });
 module.exports = router

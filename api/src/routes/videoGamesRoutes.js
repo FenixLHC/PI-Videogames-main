@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
             videogames.length ? res.send(videogames) : res.status(404).send('There is not videogames with that name / No existen videojuegos con ese nombre')
         }
     } catch (error) {
-        res.send(error.message)
+        res.send([error.message,'error getting videogames'])
     }
 
 });
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
         const newVideogame = await createVideogame(req.body);
         res.status(201).json(newVideogame)
     } catch (error) {
-        res.status(400).send(error.message)
+        res.status(400).send([error.message,'error posting videogames'])
     }
 });
 
