@@ -117,10 +117,17 @@ export default function VideogameCreate() {
   };
 
   const handleCheckbox = (e) => {
+    // e.preventDefault();
+    console.log(e.target.checked)
     if (e.target.checked) {
       setVideogame({
         ...videogame,
         platforms: [...videogame.platforms, e.target.value],
+      });
+    }else if (!e.target.checked){
+      setVideogame({
+        ...videogame,
+        platforms: [...videogame.platforms.filter(p=>p!==e.target.value)],
       });
     }
     console.log(videogame);
@@ -133,6 +140,13 @@ export default function VideogameCreate() {
     });
     console.log(videogame);
   };
+
+  const handleDelete = (genreDeleted)=>{
+    setVideogame({
+      ...videogame,
+      genre:videogame.genre.filter(g=>g!==genreDeleted)
+    })
+  }
 
   const handleOnsubmit = (e) => {
     e.preventDefault();
@@ -241,16 +255,18 @@ export default function VideogameCreate() {
                     key={g.id}
                     value={g.name}
                     name={g.name}
-                    // onChange={handleSelect}
                   >
                     {g.name}
                   </option>
                 );
               })}
             </select>
-            <ul>
-              <li>{videogame.genre.map((g) => `-${g}-`)}</li>
-            </ul>
+             {videogame.genre.map((g,index) => {
+                return(<a key={index}>
+                  {g} 
+                  <button key={index} className={styles.btnX} onClick={()=>handleDelete(g)}>x</button>
+                </a>
+              )})}
           </div>
           {/* PLATFORMS */}
           <div>

@@ -12,7 +12,7 @@ function App() {
   return (
     <React.Fragment>
       <Route exact path='/' component={LandingPage} />
-      <Route path='/' component={NavBar} />
+      {/* <Route path='/' component={NavBar} /> */}
       <Route  path='/Home' component={Home} />
       <Route  path='/CreateVideogame' component={VideogameCreate} />
       <Route  path='/VideogameDetail/:id' component={VideogameDetail} />

@@ -64,6 +64,8 @@ export default function Home(props) {
     }
     console.log(`${renderizated}`)
     return (
+        <div>
+        <NavBar/>
         <div className={styles.Home}>
             
             <h1>Take a view of this Videogames</h1>
@@ -115,6 +117,7 @@ export default function Home(props) {
                     })
                 }
             </div>
+        </div>
         </div>
     )
 
