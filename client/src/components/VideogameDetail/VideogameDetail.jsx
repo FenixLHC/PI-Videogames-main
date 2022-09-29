@@ -7,59 +7,77 @@ import NavBar from "../NavBar/NavBar";
 import styles from "./VideogameDetail.module.css";
 
 export default function VideogameDetail(props) {
-  console.log("🚀 ~ file: VideogameDetail.jsx ~ line 9 ~ VideogameDetail ~ props", props)
+  
   const dispatch = useDispatch();
   const vgD = useSelector((state) => state.videogameDetail);
-  console.log("🚀 ~ file: VideogameDetail.jsx ~ line 12 ~ VideogameDetail ~ vgD", vgD)
+  
 
   const { id } = props.match.params;
-  const {search}=useLocation();
+  const { search } = useLocation();
   const query = new URLSearchParams(search);
-  const createdInDb = query.get('createdInDb')
+  const createdInDb = query.get("createdInDb");
 
-  // const {createdInDb}=props.query;
   useEffect(() => {
-    dispatch(getVideogameDetail(id,createdInDb));
+    dispatch(getVideogameDetail(id, createdInDb));
   }, []);
 
   return (
     <div>
       <NavBar />
-      <Link to={"/Home"}>Home</Link>
-      <div>
-        <h1>{vgD.name}</h1>
-        <div>
-          <img
-            src={vgD.backgroundImage}
-            alt="Image not found"
-            width={"450px"}
-            height="550px"
-          />
+      {vgD.id == id ? (
+        <div className={styles.container}>
+          <h1>{vgD.name}</h1>
+          <div className={styles.imgData}>
+            <img
+              src={vgD.backgroundImage}
+              alt="Image not found"
+              width={"450px"}
+              height="550px"
+            />
+            <div className={styles.containerData}>
+              <div className={styles.box}>
+                <h2>Released: </h2>
+                <span>{vgD?.released ? vgD.released : vgD.releaseDate}</span>
+              </div>
+              <div className={styles.box}>
+                <h2>Rating: </h2>
+                <span>{vgD.rating}</span>
+              </div>
+
+              <div className={styles.box}>
+                <h2>Genres: </h2>
+                {vgD.genres
+                  ? vgD.genres.map((g, index) => {
+                      return <a key={index}>{g}</a>;
+                    })
+                  : vgD.Genres?.map((g) => {
+                      return <a key={g.id}>{g.name}</a>;
+                    })}
+              </div>
+
+              <div className={styles.box}>
+                <h2>Platforms: </h2>
+                {vgD.platforms
+                  ? vgD.platforms.map((p, index) => {
+                      return <a key={index}>{p}</a>;
+                    })
+                  : vgD.Platforms?.map((p, index) => {
+                      return <a key={index}>{p.platform?.name}</a>;
+                    })}
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.description}>
+            <h2>Descripcion: </h2>
+            <div type="text" className={styles.text}>
+              {vgD.description}
+            </div>
+          </div>
         </div>
-        <h3>Released: {vgD?.released?vgD.released:vgD.releaseDate}</h3>
-        <h4>Rating: {vgD.rating}</h4>
-        <div>
-          Genres:
-          <ul>
-            {vgD.genres? vgD.genres.map((g,index) => {
-              return <li key={index}>{g}</li>;
-            }):vgD.Genres?.map((g) => {
-              return <li key={g.id}>{g.name}</li>;
-            })}
-          </ul>
-        </div>
-        <div>
-          Platforms:
-          <ul>
-            {vgD.platforms? vgD.platforms.map((p,index) => {
-              return <li key={index}>{p}</li>;
-            }):vgD.Platforms?.map((p,index) => {
-              return <li key={index}>{p.platform?.name}</li>;
-            })}
-          </ul>
-        </div>
-        <text>Descripcion: {vgD.description}</text>
-      </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 }

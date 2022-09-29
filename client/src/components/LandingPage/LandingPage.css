@@ -19,25 +19,50 @@ body {
   
   .flex {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* flex-direction: column; */
   }
-  
+  .flex2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+  }
   .box {
     padding: 0px 10px;
     font-size: 60px;
     font-weight: bold;
-    font-family: "Poppins", sans-serif;
-    color: var(--fontColor);
+    /* font-family: "Poppins", sans-serif; */
+    color: var(--contrast);
   }
   
   .animateSlideup {
     margin-right: 16px;
     transform: translateY(200px) rotate(15deg);
     animation: slideup 1000ms cubic-bezier(0.65, 0, 0.35, 1) 1 forwards;
-    transform-origin: top center;
+    transform-origin: center;
   }
-  
+  .btn {
+    margin-right: 16px;
+    transform: translateY(200px) rotate(15deg);
+    animation: slideup 2500ms cubic-bezier(0.65, 0, 0.35, 1) 1 forwards;
+    transform-origin: center;
+    
+    width: 80px;
+    height: 45px;
+    margin-top: 25%;
+    background-color: var(--contrast);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn:hover{
+    /* transform: translateX(200px); */
+    border: 2px solid #2EC5CE;
+  }
   @keyframes slideup {
     0% {
       transform: translateY(200px) rotate(20deg);
@@ -50,11 +75,11 @@ body {
   .fs {
     height: 12px;
     width: 12px;
-    background-color: #f95959;
+    background-color: #2EC5CE;
     margin-left: -16px;
     margin-top: 28px;
     opacity: 0;
-    animation: rotate-fs 1800ms cubic-bezier(0.5, 1, 0.89, 1) forwards;
+    animation: rotateFs 2200ms cubic-bezier(0.5, 1, 0.89, 1) forwards;
     transform-origin: center;
   }
   

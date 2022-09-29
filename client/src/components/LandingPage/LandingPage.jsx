@@ -16,7 +16,7 @@ export default function LandingPage() {
     }, timeout);
   }, []);
   // let flag = true;
-  const quote = ["Welcome", "to", "Henry", "videogames"];
+  const quote = ["Welcome", "to", "Henry", "Videogames", ' '];
   let delay = 0;
 
   if (render === "curtain") {
@@ -36,19 +36,20 @@ export default function LandingPage() {
     );
   } else if (render === "quote") {
     return (
-      <div id='main'>
+      <div id='main' className="flex">
         {/* <div className="progresBar"></div> */}
         <div className="boxContainer">
-          <div className={`box flex`}>
-            {quote.map((q) => {
+          <div className={`box flex2`}>
+            {quote.map((q,index) => {
               delay = delay + 22;
-              return <span className="animateSlideup">{q}</span>;
+              return <span key={index} className="animateSlideup">{q}</span>;
             })}
+            <div className={'fs flex2'}></div>
           </div>
-          <Link to="/Home">
-            <button>Enter</button>
-          </Link>
         </div> 
+          <Link to="/Home" className="link">
+            <button className="btn">Go now!</button>
+          </Link>
       </div>
     );
   }
