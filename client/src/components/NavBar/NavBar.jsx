@@ -19,7 +19,7 @@ export default function NavBar(){
         <nav>
             <div className="container">
                 <div className='logo'>
-                    <img src={logo} alt="" />
+                    {/* <img src={logo} alt="" /> */}
                     <h1>Henry Videogames</h1>
                 </div>
                 <div className='menu'>

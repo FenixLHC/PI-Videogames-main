@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { getVideogameDetail } from "../../redux/actions";
+import NavBar from "../NavBar/NavBar";
 
 import styles from "./VideogameDetail.module.css";
 
@@ -23,6 +24,7 @@ export default function VideogameDetail(props) {
 
   return (
     <div>
+      <NavBar />
       <Link to={"/Home"}>Home</Link>
       <div>
         <h1>{vgD.name}</h1>

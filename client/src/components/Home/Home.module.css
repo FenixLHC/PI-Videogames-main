@@ -16,10 +16,22 @@
 .Home{
     /* background-color: #18191F; */
     width: 100%;
-    border: 3px solid red;
-
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
+.Home h1{
+    align-content: center;
+    /* color: #FFF; */
+    /* font-size: 15px; */
+    /* font-weight: 200; */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 10px 10px;
+}
 .flexContainer{
     /* background-color: #969BAB; */
     display: flex;
@@ -27,13 +39,39 @@
     flex-wrap: wrap;
     width:90%;
     margin:0 auto;
-    border: 3px solid violet ;
+    /* border: 3px solid violet ; */
     margin:0 auto;
-    justify-content: space-between;
+    gap: 15px;
     
 }
 .filters{
-    border: 3px solid white;
+    /* border: 3px solid white; */
+    display: flex;
+    align-content: space-between;
+    margin: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+.filters select{
+    background-color: rgb(33,33,33,0.8);
+    color: #eeeeee;
+    border-radius: 5px;
+    cursor: pointer;
+    border:2px solid var(--primary);
+}
+.filters select:hover{
+    background-color: var(--primary);
+}
+.filters button{
+    background-color: rgb(33,33,33,0.8);
+    color: #eeeeee;
+    border-radius: 5px;
+    cursor: pointer;
+    border:2px solid var(--primary);
+
+}
+.filters button:hover{
+    background-color: var(--primary);
 }
 
 /* .pagination{

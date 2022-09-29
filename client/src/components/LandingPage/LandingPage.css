@@ -2,6 +2,7 @@
 body {
     margin: 0px;
     padding: 0px;
+    /* background-image: none; */
   }
   
   :root {
@@ -75,6 +76,7 @@ body {
   .curtain {
     position: fixed;
     background-color: var(--contrast);
+    /* background-image: url('../img/valentin-beauvais-yVUQlyRlJSw-unsplash.jpeg'); */
     width: 100vw;
     min-height: 100vh;
     top: 0px;

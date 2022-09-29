@@ -68,7 +68,7 @@ export default function Home(props) {
         <NavBar/>
         <div className={styles.Home}>
             
-            <h1>Take a view of this Videogames</h1>
+            <h1>Set filters</h1>
             <div className={styles.filters}>
                 <button onClick={(e) => { handleReload(e) }} >
                     Reload all Videogames
@@ -97,9 +97,11 @@ export default function Home(props) {
                     <option value='Created'>Created</option>
                 </select>
             </div>
-            <Paginated allVideogamesLength={totalVideogames.length} videogamesPerPage={videogamesPerPage} paginated={paginated} currentPage={currentPage}/>
 
-            {/* <SearchBar /> */}
+            <SearchBar />
+            
+            {currentVideogames.length>1?<Paginated allVideogamesLength={totalVideogames.length} videogamesPerPage={videogamesPerPage} paginated={paginated} currentPage={currentPage}/>:<div></div>}
+
             
             <div className={styles.flexContainer}>
                 {

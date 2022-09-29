@@ -1,0 +1,29 @@
+.container{
+    margin:10px 0;
+    
+}
+
+.container input{
+    background-color: rgb(33,33,33,0.8);
+    color: var(--light);
+    border-radius: 5px;
+    border: none;
+    width: 300px;
+    height: 33px;
+    margin:3px 2px 2px 2px;
+    cursor: pointer;
+}
+
+.container button{
+    background-color: rgb(33,33,33,0.8);
+    color: #EEEEEE;
+    border-radius: 5px;
+    border: 2px solid var(--primary);
+    cursor: pointer;
+    height: 40px;
+    width: 75px;
+}
+
+.container button:hover{
+    background-color: var(--primary);
+}

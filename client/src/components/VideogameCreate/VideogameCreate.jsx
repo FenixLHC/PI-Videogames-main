@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { createVideogame, getGenres, getPlataforms } from "../../redux/actions";
 import { isEmptyObj } from "../../utils";
 import styles from "./VideogameCreate.module.css";
+import NavBar from "../NavBar/NavBar";
 
 export default function VideogameCreate() {
   //LOCAL STATES AND HOOKS///////////////////////////////////////////////////
@@ -176,7 +177,9 @@ export default function VideogameCreate() {
 
   //RENDER///////////////////////////////////////////////////////////////
   return (
+
     <div>
+      <NavBar/>
       <h1 className={styles.createForm}>Create videogame</h1>
       <div className={styles.main}>
         <form onSubmit={handleOnsubmit} className={styles.main}>
@@ -292,10 +295,10 @@ export default function VideogameCreate() {
           {/* DESCRIPTION */}
           <div>
             <h2 className={styles.name}>Description:</h2>
-            <input className={styles.description}
+            <textarea className={styles.description}
               name="description"
               value={videogame.description}
-              type="text"
+              // type="textarea"
               onChange={(e) => handleOnchange(e)}
               required
             />

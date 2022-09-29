@@ -6,25 +6,23 @@ export default function Card(props) {
   return (
     <div className={styles.Card}>
 
-      <div className={styles.name}>
-        <Link to={`/VideogameDetail/${props.id}?createdInDb=${props.createdInDb}`}>
+      {/* <div className={styles.name}> */}
+        <Link to={`/VideogameDetail/${props.id}?createdInDb=${props.createdInDb}`} className={styles.link}>
           <h2>{props.name}</h2>
         </Link>
-      </div>
-      <div className={styles.image}>
-        <img src={props.imgUrl} alt={'Image not found'} />
-      </div>
+      {/* </div> */}
+      {/* <div > */}
+        <img src={props.imgUrl} alt={'Image not found'} className={styles.image} />
+      {/* </div> */}
       <footer className={styles.footer}>
         <div className={styles.genres}>
-          <ul >
             {props.genres?.map((g,index) => (
               <a key={index}>{g}</a>
             ))}
-          </ul>
         </div>
-        <Link to={`/VideogameDetail/${props.id}?createdInDb=${props.createdInDb}`}>
+        <Link to={`/VideogameDetail/${props.id}?createdInDb=${props.createdInDb}`} className={styles.link}>
           <button className={styles.btn}>
-            Know more
+            Go!
           </button>
           
         </Link>
