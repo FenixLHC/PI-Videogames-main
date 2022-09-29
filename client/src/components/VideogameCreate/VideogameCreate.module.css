@@ -103,7 +103,7 @@
 }
 .button button{
     background-color: #8C30F5;
-    margin: 20px 0 0 20px;
+    margin: 20px 0 0 435px;
     text-align: center;
     border-radius: 12px;
     /* border: 2px solid #366473; */
@@ -118,4 +118,8 @@
     font-size: 17px;
     color: black;
     border: 2px solid black;
+}
+
+.error{
+    color:red;
 }

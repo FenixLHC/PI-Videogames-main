@@ -65,7 +65,7 @@ export default function Home(props) {
     console.log(`${renderizated}`)
     return (
         <div>
-        <NavBar/>
+        {/* <NavBar/> */}
         <div className={styles.Home}>
             
             <h1>Set filters</h1>

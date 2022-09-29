@@ -179,7 +179,7 @@ export default function VideogameCreate() {
   return (
 
     <div>
-      <NavBar/>
+      {/* <NavBar/> */}
       <h1 className={styles.createForm}>Create videogame</h1>
       <div className={styles.main}>
         <form onSubmit={handleOnsubmit} className={styles.main}>
@@ -197,7 +197,7 @@ export default function VideogameCreate() {
               }}
               required
             />
-            {!errorName ? null : <span>{errorName}</span>}
+            {!errorName ? null : <span className={styles.error}>{errorName}</span>}
           </div>
           {/* DATE OF RELEASED */}
           <div>
@@ -213,7 +213,7 @@ export default function VideogameCreate() {
               }}
               required
             />
-            {!errorDate ? null : <span>{errorDate}</span>}
+            {!errorDate ? null : <span className={styles.error}>{errorDate}</span>}
           </div>
           {/* RATING */}
           <div>
@@ -230,7 +230,7 @@ export default function VideogameCreate() {
                 validateRating(e.target.value);
               }}
             />
-            {!errorRating ? null : <span>{errorRating}</span>}
+            {!errorRating ? null : <span className={styles.error}>{errorRating}</span>}
           </div>
           {/* BACKGROUND IMAGE */}
           <div>
@@ -245,7 +245,7 @@ export default function VideogameCreate() {
                 validateImage(e.target.value);
               }}
             />
-            {!errorImage ? null : <span>{errorImage}</span>}
+            {!errorImage ? null : <span className={styles.error}>{errorImage}</span>}
           </div>
           {/* GENRES */}
           <div>
@@ -290,7 +290,7 @@ export default function VideogameCreate() {
                 );
               })}
             </div>
-            {!errorPlatforms ? null : <span>{errorPlatforms}</span>}
+            {!errorPlatforms ? null : <span className={styles.error}>{errorPlatforms}</span>}
           </div>
           {/* DESCRIPTION */}
           <div>

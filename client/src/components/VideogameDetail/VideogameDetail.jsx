@@ -23,7 +23,7 @@ export default function VideogameDetail(props) {
 
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       {vgD.id == id ? (
         <div className={styles.container}>
           <h1>{vgD.name}</h1>
