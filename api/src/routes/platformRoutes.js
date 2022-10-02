@@ -7,7 +7,7 @@ router.get('/',async (req,res)=>{
         const platforms= await getPlataforms()
         res.send(platforms)
     } catch (error) {
-        res.send([error.message,'error getting platforms'])
+        res.status(400).send([error.message,'error getting platforms'])
     }
 });
 

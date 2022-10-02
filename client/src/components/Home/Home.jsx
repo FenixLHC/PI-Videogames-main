@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 import { filterByGenre, filterByOrigin, getGenres, getVideogames, orderByName, orderByRating } from "../../redux/actions";
 import Card from "../Card/Card";
+import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBar";
 import Paginated from "../Paginated/Paginated";
 import SearchBar from "../SearchBar/SearchBar";
@@ -65,7 +66,6 @@ export default function Home(props) {
     console.log(`${renderizated}`)
     return (
         <div>
-        {/* <NavBar/> */}
         <div className={styles.Home}>
             
             <h1>Set filters</h1>
@@ -100,7 +100,7 @@ export default function Home(props) {
 
             <SearchBar />
             
-            {currentVideogames.length>1?<Paginated allVideogamesLength={totalVideogames.length} videogamesPerPage={videogamesPerPage} paginated={paginated} currentPage={currentPage}/>:<div></div>}
+            {currentVideogames.length>1?<Paginated allVideogamesLength={totalVideogames.length} videogamesPerPage={videogamesPerPage} paginated={paginated} currentPage={currentPage}/>:<div> </div>}
 
             
             <div className={styles.flexContainer}>

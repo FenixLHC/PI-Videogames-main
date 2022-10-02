@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
         const genres= await getApiGenres()
         res.send(genres)
     } catch (error) {
-        res.send([error.message,'error getting genres'])
+        res.status(400).send([error.message,'error getting genres'])
     }
 
 });
