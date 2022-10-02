@@ -15,6 +15,8 @@ router.use('/videogame', oneVgRoute);
 router.use('/genres', genreRoutes)
 router.use('/platforms',platformsRoutes)
 
-
+router.get('/healthServer', async (req,res)=>{
+    res.send('OK');
+})
 
 module.exports = router;
